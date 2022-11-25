@@ -36,8 +36,8 @@ from transformers.utils import check_min_version, send_example_telemetry
 from transformers.utils.versions import require_version
 
 # %%
-os.system("python utils/jsonize.py --dataset aslg --mode train dev test --src en --tgt gloss.asl")
-os.system("python utils/jsonize.py --dataset ncslgr --mode train dev test --src en --tgt gloss.asl")
+os.system("python utils/jsonize.py --dataset aslg --mode train dev test --src gloss.asl --tgt en")
+os.system("python utils/jsonize.py --dataset ncslgr --mode train dev test --src gloss.asl --tgt en")
 
 # %%
 # f1 = open("./data/aslg.train.en", 'r', encoding = 'utf-8-sig').readlines()
@@ -274,8 +274,8 @@ model_args, data_args, training_args = parser.parse_args_into_dataclasses([
     "--id_test_file", f"./data/test_{id_dataset}.json",
     "--model_name_or_path", "facebook/mbart-large-cc25", 
     "--output_dir" , "./results",
-    "--src_lang", "en_XX",
-    "--tgt_lang", "gl_EN",
+    "--src_lang", "gl_EN",
+    "--tgt_lang", "en_XX",
     "--vocab_size", "6000",
     "--max_source_length", "50",
     "--max_target_length", "50",
